@@ -145,13 +145,13 @@ body {
 .emp-content { flex: 1; overflow-y: auto; background: var(--color-bg-page); }
 
 .emp-sidebar {
-  width: 260px; flex-shrink: 0; background: #fff;
+  width: 260px; flex-shrink: 0; background: var(--color-surface);
   border-right: 1px solid var(--color-border);
   display: flex; flex-direction: column; height: 100%; overflow-y: auto; z-index: 20;
   transition: width .2s;
 }
 .emp-topbar {
-  height: 72px; background: #fff; border-bottom: 1px solid var(--color-border);
+  height: 72px; background: var(--color-surface); border-bottom: 1px solid var(--color-border);
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 32px; flex-shrink: 0; z-index: 10;
 }
@@ -162,9 +162,22 @@ body {
   .emp-sidebar .sidebar-label,
   .emp-sidebar .sidebar-section,
   .emp-sidebar .sidebar-footer-text { display: none !important; }
+  /* Center icons; strip padding and left-border (inline styles need !important) */
+  .emp-nav-item {
+    justify-content: center !important;
+    padding: 0 !important;
+    border-left: 3px solid transparent !important;
+  }
+  /* Collapse user widget to avatar only */
+  .emp-user-widget {
+    justify-content: center;
+    padding: 8px;
+    margin: 8px 6px 16px;
+  }
+  .emp-user-chevron { display: none; }
   .emp-search { display: none; }
 }
-/* Mobile: hide sidebar */
+/* Mobile: hide sidebar entirely */
 @media (max-width: 768px) {
   .emp-sidebar { display: none; }
   .emp-topbar  { padding: 0 16px; }

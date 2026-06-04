@@ -1,4 +1,7 @@
-export type EmployeeLang = 'th' | 'en'
+export type { LoginLang as EmployeeLang } from '@/lib/login-tr'
+import type { LoginLang } from '@/lib/login-tr'
+
+type Lang = LoginLang
 
 const TR = {
   th: {
@@ -37,7 +40,7 @@ const TR = {
 
 export type EmployeeTrKey = keyof typeof TR.en
 
-export function et(lang: EmployeeLang, key: EmployeeTrKey): string {
+export function et(lang: Lang, key: EmployeeTrKey): string {
   const map = TR[lang] as Record<string, string>
   return map[key] ?? (TR.en as Record<string, string>)[key] ?? key
 }
@@ -45,7 +48,7 @@ export function et(lang: EmployeeLang, key: EmployeeTrKey): string {
 const MONTH_TH = ['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม']
 const MONTH_EN = ['January','February','March','April','May','June','July','August','September','October','November','December']
 
-export function monthYear(lang: EmployeeLang): string {
+export function monthYear(lang: Lang): string {
   const d = new Date()
   const months = lang === 'th' ? MONTH_TH : MONTH_EN
   return `${months[d.getMonth()]} ${d.getFullYear()}`

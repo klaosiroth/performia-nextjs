@@ -1,10 +1,10 @@
+import { createClient } from '@/lib/supabase/server'
 import EmployeeShell from '@/components/layout/employee-shell'
 
 export default async function EmployeeLayout({ children }: { children: React.ReactNode }) {
   let profile: { name_th: string | null; name_en: string | null; dept: string | null } | null = null
 
   try {
-    const { createClient } = await import('@/lib/supabase/server')
     const supabase = await createClient()
     const { data: { user } } = await supabase.auth.getUser()
     if (user) {
@@ -16,7 +16,7 @@ export default async function EmployeeLayout({ children }: { children: React.Rea
       profile = data
     }
   } catch {
-    // Supabase not configured in this environment — shell renders with null profile
+    // Supabase not configured — shell renders with null profile
   }
 
   return <EmployeeShell profile={profile}>{children}</EmployeeShell>

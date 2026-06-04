@@ -99,31 +99,32 @@ function NavItem({ href, active, children }: { href: string; active: boolean; ch
     color: active ? 'var(--color-navy)' : 'var(--color-text-secondary)',
     cursor: 'pointer', textDecoration: 'none',
     transition: 'background .16s, color .16s',
-    background: active ? '#EEF8FF' : 'transparent',
+    background: active ? 'var(--color-bg-soft)' : 'transparent',
     borderLeft: active ? '3px solid var(--color-aqua)' : '3px solid transparent',
     paddingLeft: active ? 11 : 14,
   }
 
+  const onHoverIn  = (e: React.MouseEvent<HTMLElement>) => {
+    if (active) return
+    e.currentTarget.style.background = 'var(--color-muted)'
+    e.currentTarget.style.color      = 'var(--color-navy)'
+  }
+  const onHoverOut = (e: React.MouseEvent<HTMLElement>) => {
+    if (active) return
+    e.currentTarget.style.background = 'transparent'
+    e.currentTarget.style.color      = 'var(--color-text-secondary)'
+  }
+
   if (href === '#') {
     return (
-      <span
-        role="menuitem"
-        style={base}
-        onMouseEnter={e => { if (!active) { e.currentTarget.style.background = 'var(--color-muted)'; e.currentTarget.style.color = 'var(--color-navy)' } }}
-        onMouseLeave={e => { if (!active) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--color-text-secondary)' } }}
-      >
+      <span role="menuitem" className="emp-nav-item" style={base} onMouseEnter={onHoverIn} onMouseLeave={onHoverOut}>
         {children}
       </span>
     )
   }
 
   return (
-    <Link
-      href={href}
-      style={base}
-      onMouseEnter={e => { if (!active) { e.currentTarget.style.background = 'var(--color-muted)'; e.currentTarget.style.color = 'var(--color-navy)' } }}
-      onMouseLeave={e => { if (!active) { e.currentTarget.style.background = active ? '#EEF8FF' : 'transparent'; e.currentTarget.style.color = active ? 'var(--color-navy)' : 'var(--color-text-secondary)' } }}
-    >
+    <Link href={href} className="emp-nav-item" style={base} onMouseEnter={onHoverIn} onMouseLeave={onHoverOut}>
       {children}
     </Link>
   )
@@ -131,11 +132,11 @@ function NavItem({ href, active, children }: { href: string; active: boolean; ch
 
 function SidebarUserWidget({ user }: { user: SidebarUser | null }) {
   const initials = user?.initials ?? '?'
-  const name = user?.name ?? '—'
-  const dept = user?.dept ?? ''
+  const name     = user?.name     ?? '—'
+  const dept     = user?.dept     ?? ''
 
   return (
-    <div style={{ margin: '8px 12px 16px', padding: 14, borderRadius: 16, border: '1px solid var(--color-border)', background: 'var(--color-bg-page)', display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 }}>
+    <div className="emp-user-widget" style={{ margin: '8px 12px 16px', padding: 14, borderRadius: 16, border: '1px solid var(--color-border)', background: 'var(--color-bg-page)', display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 }}>
       <div style={{ width: 36, height: 36, borderRadius: 10, background: 'var(--color-navy)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 700, fontSize: 13, flexShrink: 0 }}>
         {initials}
       </div>
@@ -143,7 +144,7 @@ function SidebarUserWidget({ user }: { user: SidebarUser | null }) {
         <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--color-text-primary)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{name}</div>
         {dept && <div style={{ fontSize: 11, color: 'var(--color-text-secondary)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{dept}</div>}
       </div>
-      <ChevronRight size={14} style={{ color: 'var(--color-border)', flexShrink: 0 }} aria-hidden="true" />
+      <ChevronRight size={14} className="emp-user-chevron" style={{ color: 'var(--color-border)', flexShrink: 0 }} aria-hidden="true" />
     </div>
   )
 }

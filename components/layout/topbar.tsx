@@ -15,11 +15,10 @@ interface TopbarProps {
 }
 
 function getPageTitle(pathname: string, lang: EmployeeLang): string {
-  const t = (k: Parameters<typeof et>[1]) => et(lang, k)
-  if (pathname.startsWith('/marketplace')) return t('page.marketplace')
-  if (pathname.startsWith('/profile'))     return t('page.profile')
-  if (pathname.startsWith('/assessment'))  return t('page.assessment')
-  return t('page.home')
+  if (pathname.startsWith('/marketplace')) return et(lang, 'page.marketplace')
+  if (pathname.startsWith('/profile'))     return et(lang, 'page.profile')
+  if (pathname.startsWith('/assessment'))  return et(lang, 'page.assessment')
+  return et(lang, 'page.home')
 }
 
 export default function Topbar({ lang, onLangChange, user }: TopbarProps) {
@@ -51,13 +50,15 @@ export default function Topbar({ lang, onLangChange, user }: TopbarProps) {
 
 function SearchBox({ placeholder }: { placeholder: string }) {
   return (
-    <div
+    <button
+      type="button"
+      aria-label="Search"
       className="emp-search"
-      style={{ display: 'flex', alignItems: 'center', gap: 8, background: 'var(--color-bg-page)', border: '1px solid var(--color-border)', borderRadius: 12, padding: '0 14px', height: 40, minWidth: 200 }}
+      style={{ display: 'flex', alignItems: 'center', gap: 8, background: 'var(--color-bg-page)', border: '1px solid var(--color-border)', borderRadius: 12, padding: '0 14px', height: 40, minWidth: 200, cursor: 'pointer', fontFamily: 'var(--font-sans)' }}
     >
       <Search size={14} style={{ color: 'var(--color-text-secondary)', flexShrink: 0 }} aria-hidden="true" />
-      <span style={{ fontSize: 13, color: '#B0BFCF' }}>{placeholder}</span>
-    </div>
+      <span style={{ fontSize: 13, color: 'var(--color-text-muted)' }}>{placeholder}</span>
+    </button>
   )
 }
 
@@ -70,7 +71,7 @@ function LangSwitcher({ lang, onChange }: { lang: EmployeeLang; onChange: (l: Em
   }
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', background: '#fff', border: '1px solid var(--color-border)', borderRadius: 12, padding: 3, gap: 2, height: 36, flexShrink: 0 }}>
+    <div style={{ display: 'flex', alignItems: 'center', background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: 12, padding: 3, gap: 2, height: 36, flexShrink: 0 }}>
       <button
         type="button"
         aria-pressed={lang === 'th'}
@@ -96,7 +97,7 @@ function NotificationButton() {
     <button
       type="button"
       aria-label="Notifications"
-      style={{ position: 'relative', width: 40, height: 40, borderRadius: 12, border: '1px solid var(--color-border)', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', flexShrink: 0 }}
+      style={{ position: 'relative', width: 40, height: 40, borderRadius: 12, border: '1px solid var(--color-border)', background: 'var(--color-surface)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', flexShrink: 0 }}
     >
       <Bell size={16} style={{ color: 'var(--color-text-secondary)' }} aria-hidden="true" />
       <span
