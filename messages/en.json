@@ -1,0 +1,83 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "viewAll": "View all"
+  },
+  "nav": {
+    "home": "Home",
+    "profile": "Profile",
+    "marketplace": "Activities",
+    "assessment": "Assessment",
+    "budget": "Budget",
+    "history": "History",
+    "settings": "Settings",
+    "signOut": "Sign out"
+  },
+  "login": {
+    "title": "Sign in",
+    "email": "Email",
+    "password": "Password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?",
+    "signIn": "Sign in",
+    "ssoGoogle": "Continue with Google",
+    "ssoMicrosoft": "Continue with Microsoft"
+  },
+  "workspace": {
+    "title": "Choose workspace",
+    "employee": "My Performia",
+    "hr": "HR & People Dashboard",
+    "executive": "Executive Intelligence"
+  },
+  "home": {
+    "greeting": "Hello",
+    "overallScore": "PERFORM-6™ Score",
+    "credits": "Credits",
+    "creditsRemaining": "Credits remaining",
+    "upcomingBookings": "Upcoming bookings",
+    "recommended": "Recommended for you",
+    "quickActions": "Quick actions"
+  },
+  "pillars": {
+    "Mind": "Mind",
+    "Body": "Body",
+    "Money": "Money",
+    "Social": "Social",
+    "Growth": "Growth",
+    "WorkDesign": "Work Design"
+  },
+  "zones": {
+    "performing": "Performing",
+    "stable": "Stable",
+    "watch": "Watch",
+    "risk": "Risk",
+    "critical": "Critical"
+  },
+  "assessment": {
+    "title": "PERFORM-6™ Assessment",
+    "subtitle": "Evaluate your holistic wellbeing",
+    "start": "Start assessment",
+    "saveAndExit": "Save & exit",
+    "progress": "Progress",
+    "result": "Your results"
+  },
+  "marketplace": {
+    "title": "Activities",
+    "search": "Search activities",
+    "all": "All",
+    "recommended": "Recommended",
+    "book": "Book",
+    "credits": "credits",
+    "minutes": "min",
+    "online": "Online",
+    "inPerson": "In-person",
+    "hybrid": "Hybrid"
+  }
+}

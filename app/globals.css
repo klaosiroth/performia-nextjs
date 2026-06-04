@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand */
+  --color-navy:           #071B63;
+  --color-navy-dark:      #031244;
+  --color-aqua:           #10D5D2;
+  --color-cyan-accent:    #59E3FF;
+
+  /* Surfaces */
+  --color-bg-page:        #F8FBFD;
+  --color-bg-soft:        #EEF8FF;
+  --color-surface:        #FFFFFF;
+  --color-muted:          #F3F7FA;
+
+  /* Text */
+  --color-text-primary:   #061849;
+  --color-text-secondary: #52627A;
+  --color-text-muted:     #97AEC4;
+
+  /* Border */
+  --color-border:         #DCEAF5;
+
+  /* Status */
+  --color-success:        #22C55E;
+  --color-warning:        #F59E0B;
+  --color-danger:         #EF4444;
+
+  /* Pillar — Mind (purple) */
+  --color-pillar-mind:    #6D28D9;
+  /* Pillar — Body (teal) */
+  --color-pillar-body:    #047857;
+  /* Pillar — Money (amber) */
+  --color-pillar-money:   #B45309;
+  /* Pillar — Social (pink) */
+  --color-pillar-social:  #BE185D;
+  /* Pillar — Growth (blue) */
+  --color-pillar-growth:  #1D4ED8;
+  /* Pillar — Work Design (orange) */
+  --color-pillar-work:    #C2410C;
+
+  /* Zone */
+  --color-zone-performing: #059669;
+  --color-zone-stable:     #0891B2;
+  --color-zone-watch:      #D97706;
+  --color-zone-risk:       #DC2626;
+  --color-zone-critical:   #7C3AED;
+
+  /* Typography */
+  --font-sans: "Noto Sans Thai", sans-serif;
+
+  /* Border radius */
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   14px;
+  --radius-xl:   16px;
+  --radius-2xl:  20px;
+  --radius-3xl:  24px;
+  --radius-full: 99px;
+
+  /* Shadows */
+  --shadow-card:       0 1px 8px rgba(6,24,73,.06);
+  --shadow-card-hover: 0 4px 24px rgba(6,24,73,.10);
+  --shadow-modal:      0 32px 80px rgba(3,18,68,.17);
+  --shadow-button:     0 4px 24px rgba(7,27,99,.26), 0 1px 3px rgba(7,27,99,.16);
+}
+
+/* shadcn/ui CSS variable bridge */
+:root {
+  --background: var(--color-bg-page);
+  --foreground: var(--color-text-primary);
+  --card:        var(--color-surface);
+  --card-foreground: var(--color-text-primary);
+  --border:      var(--color-border);
+  --input:       var(--color-border);
+  --ring:        var(--color-navy);
+  --primary:     var(--color-navy);
+  --primary-foreground: #ffffff;
+  --secondary:   var(--color-bg-soft);
+  --secondary-foreground: var(--color-text-primary);
+  --muted:       var(--color-muted);
+  --muted-foreground: var(--color-text-secondary);
+  --accent:      var(--color-aqua);
+  --accent-foreground: #ffffff;
+  --destructive: var(--color-danger);
+  --radius: 16px;
+}
+
+body {
+  background-color: var(--color-bg-page);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Login page animations ── */
+@keyframes fu {
+  from { opacity: 0; transform: translateY(12px) }
+  to   { opacity: 1; transform: translateY(0) }
+}
+.fu  { animation: fu .65s ease-out both }
+.d1  { animation-delay: .08s }
+.d2  { animation-delay: .18s }
+.d3  { animation-delay: .30s }
+.d4  { animation-delay: .44s }
+
+@keyframes live-blink {
+  0%, 100% { opacity: 1 }
+  50%       { opacity: .15 }
+}
+.ldot { animation: live-blink 2.5s ease-in-out infinite }
+
+@keyframes ring-pulse {
+  0%, 100% { stroke-opacity: .14; transform: scale(1) }
+  50%       { stroke-opacity: .28; transform: scale(1.025) }
+}
+@keyframes ring-pulse2 {
+  0%, 100% { stroke-opacity: .09; transform: scale(1) }
+  50%       { stroke-opacity: .20; transform: scale(1.02) }
+}
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) }
+  50%       { transform: translateY(-10px) }
+}
+@keyframes float-med {
+  0%, 100% { transform: translateY(0) }
+  50%       { transform: translateY(-14px) }
+}
+@keyframes login-spin {
+  to { transform: rotate(360deg) }
+}

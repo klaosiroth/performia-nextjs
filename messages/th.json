@@ -1,0 +1,83 @@
+{
+  "common": {
+    "loading": "กำลังโหลด...",
+    "error": "เกิดข้อผิดพลาด",
+    "save": "บันทึก",
+    "cancel": "ยกเลิก",
+    "confirm": "ยืนยัน",
+    "back": "กลับ",
+    "next": "ถัดไป",
+    "submit": "ส่ง",
+    "viewAll": "ดูทั้งหมด"
+  },
+  "nav": {
+    "home": "หน้าหลัก",
+    "profile": "โปรไฟล์",
+    "marketplace": "กิจกรรม",
+    "assessment": "แบบประเมิน",
+    "budget": "งบประมาณ",
+    "history": "ประวัติ",
+    "settings": "ตั้งค่า",
+    "signOut": "ออกจากระบบ"
+  },
+  "login": {
+    "title": "เข้าสู่ระบบ",
+    "email": "อีเมล",
+    "password": "รหัสผ่าน",
+    "rememberMe": "จดจำฉัน",
+    "forgotPassword": "ลืมรหัสผ่าน?",
+    "signIn": "เข้าสู่ระบบ",
+    "ssoGoogle": "เข้าสู่ระบบด้วย Google",
+    "ssoMicrosoft": "เข้าสู่ระบบด้วย Microsoft"
+  },
+  "workspace": {
+    "title": "เลือก Workspace",
+    "employee": "My Performia",
+    "hr": "HR & People Dashboard",
+    "executive": "Executive Intelligence"
+  },
+  "home": {
+    "greeting": "สวัสดี",
+    "overallScore": "คะแนนรวม PERFORM-6™",
+    "credits": "เครดิต",
+    "creditsRemaining": "เครดิตคงเหลือ",
+    "upcomingBookings": "การจองที่กำลังมาถึง",
+    "recommended": "แนะนำสำหรับคุณ",
+    "quickActions": "การกระทำด่วน"
+  },
+  "pillars": {
+    "Mind": "จิตใจ",
+    "Body": "ร่างกาย",
+    "Money": "การเงิน",
+    "Social": "สังคม",
+    "Growth": "การเติบโต",
+    "WorkDesign": "การออกแบบงาน"
+  },
+  "zones": {
+    "performing": "ยอดเยี่ยม",
+    "stable": "มั่นคง",
+    "watch": "ควรเฝ้าระวัง",
+    "risk": "มีความเสี่ยง",
+    "critical": "วิกฤต"
+  },
+  "assessment": {
+    "title": "PERFORM-6™ Assessment",
+    "subtitle": "ประเมินสุขภาวะองค์รวมของคุณ",
+    "start": "เริ่มทำแบบประเมิน",
+    "saveAndExit": "บันทึกและออก",
+    "progress": "ความคืบหน้า",
+    "result": "ผลการประเมิน"
+  },
+  "marketplace": {
+    "title": "กิจกรรม",
+    "search": "ค้นหากิจกรรม",
+    "all": "ทั้งหมด",
+    "recommended": "แนะนำ",
+    "book": "จอง",
+    "credits": "เครดิต",
+    "minutes": "นาที",
+    "online": "ออนไลน์",
+    "inPerson": "ออฟไลน์",
+    "hybrid": "ไฮบริด"
+  }
+}
