@@ -15,11 +15,11 @@ const CIRC = 2 * Math.PI * 38  // 238.76
 export default function CreditSummaryCard({ annual, used, lang = 'th' }: CreditSummaryCardProps) {
   const t        = (k: Parameters<typeof et>[1]) => et(lang, k)
   const remaining = annual - used
-  const offset    = CIRC * (used / annual)
+  const offset    = annual > 0 ? CIRC * (used / annual) : 0
   const year      = new Date().getFullYear()
 
   return (
-    <div style={{ background: '#fff', border: '1px solid var(--color-border)', borderRadius: 24, boxShadow: 'var(--shadow-card)', padding: 24, display: 'flex', flexDirection: 'column' }}>
+    <div style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: 24, boxShadow: 'var(--shadow-card)', padding: 24, display: 'flex', flexDirection: 'column' }}>
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
         <div>

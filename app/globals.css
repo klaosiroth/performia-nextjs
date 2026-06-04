@@ -194,12 +194,6 @@ body {
   /* Quick actions: 3 columns */
   .quick-grid      { grid-template-columns: repeat(3, 1fr) !important; }
 }
-@media (max-width: 480px) {
-  /* Quick actions: still 3 cols, but wrap naturally */
-  .snap-grid  { grid-template-columns: repeat(3, 1fr) !important; }
-  .quick-grid { grid-template-columns: repeat(3, 1fr) !important; }
-}
-
 /* ── HeroSection responsive ── */
 @media (max-width: 640px) {
   .hero-section { padding: 24px 20px !important; }

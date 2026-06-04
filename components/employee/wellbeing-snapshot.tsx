@@ -5,7 +5,7 @@ import { Brain, HeartPulse, Users, TrendingUp, LayoutDashboard, Landmark, BarCha
 import { et, type EmployeeLang } from '@/lib/employee-tr'
 import type { PillarKey, ZoneKey } from '@/tokens/pillars'
 
-interface PillarStatus {
+export interface PillarStatus {
   pillar: PillarKey
   score: number
   zone: ZoneKey
@@ -20,32 +20,48 @@ type ChipStyle = { bg: string; color: string }
 
 const ZONE_CHIP: Record<ZoneKey, ChipStyle> = {
   performing: { bg: '#DCFCE7', color: '#15803D' },
-  stable:     { bg: '#EEF8FF', color: '#1D4ED8' },
+  stable:     { bg: 'var(--color-bg-soft)', color: '#1D4ED8' },
   watch:      { bg: '#FEF9C3', color: '#92400E' },
   risk:       { bg: '#FFE4E6', color: '#BE123C' },
   critical:   { bg: '#F3E8FF', color: '#6D28D9' },
 }
 
-type PillarMeta = { Icon: React.ElementType; iconBg: string; iconColor: string; labelTH: string; labelEN: string; valueTH: Record<ZoneKey, string>; valueEN: Record<ZoneKey, string> }
+// Default zone label per zone — identical for all pillars except 'stable'
+const ZONE_LABEL_TH: Record<ZoneKey, string> = { performing: 'ดี', stable: 'มั่นคง', watch: 'กำลังพัฒนา', risk: 'ต้องดูแล', critical: 'เร่งด่วน' }
+const ZONE_LABEL_EN: Record<ZoneKey, string> = { performing: 'Good', stable: 'Stable', watch: 'Improving', risk: 'At Risk', critical: 'Critical' }
+
+// Only 'stable' needs per-pillar overrides — everything else is identical across pillars
+const STABLE_TH: Partial<Record<PillarKey, string>> = { Social: 'แข็งแรง', Growth: 'สมดุล', WorkDesign: 'สมดุล' }
+const STABLE_EN: Partial<Record<PillarKey, string>> = { Social: 'Strong',   Growth: 'Balanced', WorkDesign: 'Balanced' }
+
+type PillarMeta = { Icon: React.ElementType; iconBg: string; iconColor: string; labelTH: string; labelEN: string }
 
 const PILLAR_META: Record<PillarKey, PillarMeta> = {
-  Mind:       { Icon: Brain,          iconBg: '#EEF8FF', iconColor: '#1D4ED8', labelTH: 'ใจ',        labelEN: 'Mind',       valueTH: { performing:'ดี', stable:'มั่นคง', watch:'กำลังพัฒนา', risk:'ต้องดูแล', critical:'เร่งด่วน' }, valueEN: { performing:'Good', stable:'Stable', watch:'Improving', risk:'At Risk', critical:'Critical' } },
-  Body:       { Icon: HeartPulse,     iconBg: '#DCFCE7', iconColor: '#15803D', labelTH: 'กาย',       labelEN: 'Body',       valueTH: { performing:'ดี', stable:'มั่นคง', watch:'กำลังพัฒนา', risk:'ต้องดูแล', critical:'เร่งด่วน' }, valueEN: { performing:'Good', stable:'Stable', watch:'Improving', risk:'At Risk', critical:'Critical' } },
-  Social:     { Icon: Users,          iconBg: '#EEF8FF', iconColor: '#1D4ED8', labelTH: 'สังคม',     labelEN: 'Social',     valueTH: { performing:'ดี', stable:'แข็งแรง', watch:'กำลังพัฒนา', risk:'ต้องดูแล', critical:'เร่งด่วน' }, valueEN: { performing:'Good', stable:'Strong', watch:'Improving', risk:'At Risk', critical:'Critical' } },
-  Growth:     { Icon: TrendingUp,     iconBg: '#FEF9C3', iconColor: '#92400E', labelTH: 'การเติบโต', labelEN: 'Growth',     valueTH: { performing:'ดี', stable:'สมดุล',  watch:'กำลังพัฒนา', risk:'ต้องดูแล', critical:'เร่งด่วน' }, valueEN: { performing:'Good', stable:'Balanced', watch:'Improving', risk:'At Risk', critical:'Critical' } },
-  WorkDesign: { Icon: LayoutDashboard,iconBg: '#DCFCE7', iconColor: '#15803D', labelTH: 'การทำงาน', labelEN: 'Work Design', valueTH: { performing:'ดี', stable:'สมดุล',  watch:'กำลังพัฒนา', risk:'ต้องดูแล', critical:'เร่งด่วน' }, valueEN: { performing:'Good', stable:'Balanced', watch:'Improving', risk:'At Risk', critical:'Critical' } },
-  Money:      { Icon: Landmark,       iconBg: '#EEF8FF', iconColor: '#1D4ED8', labelTH: 'การเงิน',  labelEN: 'Money',      valueTH: { performing:'ดี', stable:'มั่นคง', watch:'กำลังพัฒนา', risk:'ต้องดูแล', critical:'เร่งด่วน' }, valueEN: { performing:'Good', stable:'Stable', watch:'Improving', risk:'At Risk', critical:'Critical' } },
+  Mind:       { Icon: Brain,           iconBg: 'var(--color-bg-soft)', iconColor: '#1D4ED8', labelTH: 'ใจ',        labelEN: 'Mind'        },
+  Body:       { Icon: HeartPulse,      iconBg: '#DCFCE7',              iconColor: '#15803D', labelTH: 'กาย',       labelEN: 'Body'        },
+  Social:     { Icon: Users,           iconBg: 'var(--color-bg-soft)', iconColor: '#1D4ED8', labelTH: 'สังคม',     labelEN: 'Social'      },
+  Growth:     { Icon: TrendingUp,      iconBg: '#FEF9C3',              iconColor: '#92400E', labelTH: 'การเติบโต', labelEN: 'Growth'      },
+  WorkDesign: { Icon: LayoutDashboard, iconBg: '#DCFCE7',              iconColor: '#15803D', labelTH: 'การทำงาน', labelEN: 'Work Design' },
+  Money:      { Icon: Landmark,        iconBg: 'var(--color-bg-soft)', iconColor: '#1D4ED8', labelTH: 'การเงิน',  labelEN: 'Money'       },
 }
 
-// Display order matching performia-employee-home.html
 const ORDER: PillarKey[] = ['Mind', 'Body', 'Social', 'Growth', 'WorkDesign', 'Money']
 
+function zoneLabel(key: PillarKey, zone: ZoneKey, lang: EmployeeLang): string {
+  if (zone === 'stable') {
+    return lang === 'th'
+      ? (STABLE_TH[key] ?? ZONE_LABEL_TH.stable)
+      : (STABLE_EN[key] ?? ZONE_LABEL_EN.stable)
+  }
+  return lang === 'th' ? ZONE_LABEL_TH[zone] : ZONE_LABEL_EN[zone]
+}
+
 export default function WellbeingSnapshot({ pillars, lang = 'th' }: WellbeingSnapshotProps) {
-  const t = (k: Parameters<typeof et>[1]) => et(lang, k)
+  const t    = (k: Parameters<typeof et>[1]) => et(lang, k)
   const byKey = Object.fromEntries(pillars.map(p => [p.pillar, p])) as Partial<Record<PillarKey, PillarStatus>>
 
   return (
-    <div style={{ background: '#fff', border: '1px solid var(--color-border)', borderRadius: 24, boxShadow: 'var(--shadow-card)', padding: 24 }}>
+    <div style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: 24, boxShadow: 'var(--shadow-card)', padding: 24 }}>
       {/* Section header */}
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 20 }}>
         <div>
@@ -65,12 +81,11 @@ export default function WellbeingSnapshot({ pillars, lang = 'th' }: WellbeingSna
       {/* 6-column pillar grid */}
       <div className="snap-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: 10, marginBottom: 18 }}>
         {ORDER.map(key => {
-          const meta   = PILLAR_META[key]
-          const status = byKey[key]
-          const zone   = status?.zone ?? 'stable'
-          const chip   = ZONE_CHIP[zone]
-          const label  = lang === 'th' ? meta.labelTH : meta.labelEN
-          const value  = lang === 'th' ? meta.valueTH[zone] : meta.valueEN[zone]
+          const meta  = PILLAR_META[key]
+          const zone  = byKey[key]?.zone ?? 'stable'
+          const chip  = ZONE_CHIP[zone]
+          const label = lang === 'th' ? meta.labelTH : meta.labelEN
+          const value = zoneLabel(key, zone, lang)
 
           return (
             <div
@@ -83,7 +98,7 @@ export default function WellbeingSnapshot({ pillars, lang = 'th' }: WellbeingSna
                 <meta.Icon size={16} style={{ color: meta.iconColor }} aria-hidden="true" />
               </div>
               <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: 5 }}>{label}</div>
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4, padding: '2px 7px', borderRadius: 6, background: chip.bg, color: chip.color, fontSize: 10, fontWeight: 600, letterSpacing: '0.2px' }}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', padding: '2px 7px', borderRadius: 6, background: chip.bg, color: chip.color, fontSize: 10, fontWeight: 600, letterSpacing: '0.2px' }}>
                 {value}
               </span>
             </div>
@@ -99,9 +114,9 @@ export default function WellbeingSnapshot({ pillars, lang = 'th' }: WellbeingSna
         <p style={{ fontSize: 12, color: 'var(--color-text-secondary)' }}>{t('snap.footer')}</p>
         <Link
           href="/profile"
-          style={{ height: 36, borderRadius: 10, padding: '0 14px', fontSize: 13, fontWeight: 600, background: '#fff', border: '1px solid var(--color-border)', color: 'var(--color-navy)', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 6, textDecoration: 'none', fontFamily: 'var(--font-sans)', transition: 'background .18s', flexShrink: 0 }}
+          style={{ height: 36, borderRadius: 10, padding: '0 14px', fontSize: 13, fontWeight: 600, background: 'var(--color-surface)', border: '1px solid var(--color-border)', color: 'var(--color-navy)', display: 'inline-flex', alignItems: 'center', gap: 6, textDecoration: 'none', fontFamily: 'var(--font-sans)', transition: 'background .18s', flexShrink: 0 }}
           onMouseEnter={e => { e.currentTarget.style.background = 'var(--color-bg-soft)' }}
-          onMouseLeave={e => { e.currentTarget.style.background = '#fff' }}
+          onMouseLeave={e => { e.currentTarget.style.background = 'var(--color-surface)' }}
         >
           <BarChart2 size={14} aria-hidden="true" />
           <span>{t('snap.cta')}</span>

@@ -23,8 +23,8 @@ type PillarCard = {
 
 const PILLAR_CARDS: Record<PillarKey, PillarCard> = {
   Mind: {
-    Icon: Brain, iconBg: '#EEF8FF', iconColor: '#1D4ED8',
-    chipBg: '#EEF8FF', chipColor: '#1D4ED8', chipTH: 'ใจ · Mind', chipEN: 'Mind',
+    Icon: Brain, iconBg: 'var(--color-bg-soft)', iconColor: '#1D4ED8',
+    chipBg: 'var(--color-bg-soft)', chipColor: '#1D4ED8', chipTH: 'ใจ · Mind', chipEN: 'Mind',
     nameTH: 'ใจที่ฟื้นตัวได้', nameEN: 'Mind Resilience',
     descTH: 'ลองกิจกรรมที่ช่วยจัดการความเครียดและฟื้นพลังใจ',
     descEN: 'Try activities that support stress recovery and emotional balance.',
@@ -105,7 +105,7 @@ export default function RecommendedFocus({ pillars, lang = 'th' }: RecommendedFo
           return (
             <div
               key={key}
-              style={{ background: '#fff', border: '1px solid var(--color-border)', borderRadius: 20, padding: 22, transition: 'box-shadow .22s, transform .22s' }}
+              style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: 20, padding: 22, transition: 'box-shadow .22s, transform .22s' }}
               onMouseEnter={e => { e.currentTarget.style.boxShadow = '0 6px 24px rgba(6,24,73,0.10)'; e.currentTarget.style.transform = 'translateY(-2px)' }}
               onMouseLeave={e => { e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.transform = 'none' }}
             >
@@ -133,9 +133,9 @@ export default function RecommendedFocus({ pillars, lang = 'th' }: RecommendedFo
                 </div>
                 <Link
                   href={card.href}
-                  style={{ height: 36, borderRadius: 10, padding: '0 14px', fontSize: 12, fontWeight: 600, background: '#fff', border: '1px solid var(--color-border)', color: 'var(--color-navy)', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 6, textDecoration: 'none', fontFamily: 'var(--font-sans)', transition: 'background .18s' }}
+                  style={{ height: 36, borderRadius: 10, padding: '0 14px', fontSize: 12, fontWeight: 600, background: 'var(--color-surface)', border: '1px solid var(--color-border)', color: 'var(--color-navy)', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 6, textDecoration: 'none', fontFamily: 'var(--font-sans)', transition: 'background .18s' }}
                   onMouseEnter={e => { e.currentTarget.style.background = 'var(--color-bg-soft)' }}
-                  onMouseLeave={e => { e.currentTarget.style.background = '#fff' }}
+                  onMouseLeave={e => { e.currentTarget.style.background = 'var(--color-surface)' }}
                 >
                   <span>{t('focus.cta')}</span>
                   <ArrowRight size={13} aria-hidden="true" />

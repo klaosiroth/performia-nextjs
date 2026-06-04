@@ -9,7 +9,7 @@ interface QuickActionsProps {
 }
 
 const ACTIONS = [
-  { Icon: UserCircle,   iconBg: '#EEF8FF', iconColor: 'var(--color-navy)', labelKey: 'quick.profile'    as const, href: '/profile'    },
+  { Icon: UserCircle,   iconBg: 'var(--color-bg-soft)', iconColor: 'var(--color-navy)', labelKey: 'quick.profile' as const, href: '/profile' },
   { Icon: Wallet,       iconBg: '#CCFBF1', iconColor: '#0F766E',           labelKey: 'quick.credits'    as const, href: '#'           },
   { Icon: LayoutGrid,   iconBg: '#FEF9C3', iconColor: '#92400E',           labelKey: 'quick.activities' as const, href: '/marketplace'},
   { Icon: ClipboardList,iconBg: '#F3E8FF', iconColor: '#6D28D9',           labelKey: 'quick.assessment' as const, href: '/assessment' },
@@ -29,9 +29,9 @@ export default function QuickActions({ lang = 'th' }: QuickActionsProps) {
           <Link
             key={labelKey}
             href={href}
-            style={{ background: '#fff', border: '1px solid var(--color-border)', borderRadius: 18, padding: '20px 12px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10, cursor: 'pointer', transition: 'background .18s, box-shadow .18s, transform .18s', textDecoration: 'none' }}
+            style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: 18, padding: '20px 12px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10, cursor: 'pointer', transition: 'background .18s, box-shadow .18s, transform .18s', textDecoration: 'none' }}
             onMouseEnter={e => { e.currentTarget.style.background = 'var(--color-bg-soft)'; e.currentTarget.style.boxShadow = '0 4px 16px rgba(6,24,73,0.07)'; e.currentTarget.style.transform = 'translateY(-2px)' }}
-            onMouseLeave={e => { e.currentTarget.style.background = '#fff'; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.transform = 'none' }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'var(--color-surface)'; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.transform = 'none' }}
           >
             <div style={{ width: 44, height: 44, borderRadius: 12, background: iconBg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Icon size={20} style={{ color: iconColor }} aria-hidden="true" />

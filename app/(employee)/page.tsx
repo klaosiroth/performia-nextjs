@@ -3,16 +3,14 @@
 import { useState } from 'react'
 import HeroSection         from '@/components/employee/hero-section'
 import CreditSummaryCard   from '@/components/employee/credit-summary-card'
-import WellbeingSnapshot   from '@/components/employee/wellbeing-snapshot'
+import WellbeingSnapshot, { type PillarStatus } from '@/components/employee/wellbeing-snapshot'
 import RecommendedFocus    from '@/components/employee/recommended-focus'
 import QuickActions        from '@/components/employee/quick-actions'
 import type { EmployeeLang } from '@/lib/employee-tr'
 import type { Database }     from '@/lib/supabase/types'
-import type { PillarKey, ZoneKey } from '@/tokens/pillars'
+import type { PillarKey } from '@/tokens/pillars'
 
 type Profile = Database['public']['Tables']['profiles']['Row']
-
-interface PillarStatus { pillar: PillarKey; score: number; zone: ZoneKey }
 
 // ── Mock data (replaced when Supabase data fetching is wired) ──
 const MOCK_PROFILE: Profile = {
