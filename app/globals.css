@@ -183,6 +183,23 @@ body {
   .emp-topbar  { padding: 0 16px; }
 }
 
+/* ── Dashboard section responsive ── */
+@media (max-width: 768px) {
+  /* Credit + Snapshot row: stack vertically */
+  .dash-credit-row { grid-template-columns: 1fr !important; }
+  /* Snapshot pillar grid: 3 columns on mobile */
+  .snap-grid       { grid-template-columns: repeat(3, 1fr) !important; }
+  /* Focus: single column */
+  .focus-grid      { grid-template-columns: 1fr !important; }
+  /* Quick actions: 3 columns */
+  .quick-grid      { grid-template-columns: repeat(3, 1fr) !important; }
+}
+@media (max-width: 480px) {
+  /* Quick actions: still 3 cols, but wrap naturally */
+  .snap-grid  { grid-template-columns: repeat(3, 1fr) !important; }
+  .quick-grid { grid-template-columns: repeat(3, 1fr) !important; }
+}
+
 /* ── HeroSection responsive ── */
 @media (max-width: 640px) {
   .hero-section { padding: 24px 20px !important; }
