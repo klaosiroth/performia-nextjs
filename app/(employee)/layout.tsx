@@ -1,18 +1,23 @@
-import Sidebar from "@/components/layout/sidebar"
-import Topbar from "@/components/layout/topbar"
+import EmployeeShell from '@/components/layout/employee-shell'
 
-export default function EmployeeLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  return (
-    <div className="flex min-h-screen">
-      <Sidebar />
-      <div className="flex flex-1 flex-col">
-        <Topbar />
-        <main className="flex-1 overflow-y-auto">{children}</main>
-      </div>
-    </div>
-  )
+export default async function EmployeeLayout({ children }: { children: React.ReactNode }) {
+  let profile: { name_th: string | null; name_en: string | null; dept: string | null } | null = null
+
+  try {
+    const { createClient } = await import('@/lib/supabase/server')
+    const supabase = await createClient()
+    const { data: { user } } = await supabase.auth.getUser()
+    if (user) {
+      const { data } = await supabase
+        .from('profiles')
+        .select('name_th, name_en, dept')
+        .eq('id', user.id)
+        .single()
+      profile = data
+    }
+  } catch {
+    // Supabase not configured in this environment — shell renders with null profile
+  }
+
+  return <EmployeeShell profile={profile}>{children}</EmployeeShell>
 }

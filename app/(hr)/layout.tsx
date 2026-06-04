@@ -1,18 +1,10 @@
-import HRSidebar from "@/components/layout/hr-sidebar"
-import Topbar from "@/components/layout/topbar"
+import HRSidebar from '@/components/layout/hr-sidebar'
 
-export default function HRLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function HRLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex min-h-screen">
+    <div style={{ display: 'flex', minHeight: '100vh' }}>
       <HRSidebar />
-      <div className="flex flex-1 flex-col">
-        <Topbar />
-        <main className="flex-1 overflow-y-auto">{children}</main>
-      </div>
+      <main style={{ flex: 1, overflowY: 'auto' }}>{children}</main>
     </div>
   )
 }

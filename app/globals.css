@@ -130,6 +130,46 @@ body {
   to { transform: rotate(360deg) }
 }
 
+/* ── Global scrollbar ── */
+::-webkit-scrollbar        { width: 5px; height: 5px; }
+::-webkit-scrollbar-track  { background: transparent; }
+::-webkit-scrollbar-thumb  { background: var(--color-border); border-radius: 99px; }
+
+/* ── Pulse dot (notification) ── */
+@keyframes pulseDot { 0%,100% { opacity: 1 } 50% { opacity: .4 } }
+.pulse-dot { animation: pulseDot 2s ease-in-out infinite; }
+
+/* ── Employee shell layout ── */
+.emp-shell   { display: flex; height: 100vh; overflow: hidden; }
+.emp-main    { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+.emp-content { flex: 1; overflow-y: auto; background: var(--color-bg-page); }
+
+.emp-sidebar {
+  width: 260px; flex-shrink: 0; background: #fff;
+  border-right: 1px solid var(--color-border);
+  display: flex; flex-direction: column; height: 100%; overflow-y: auto; z-index: 20;
+  transition: width .2s;
+}
+.emp-topbar {
+  height: 72px; background: #fff; border-bottom: 1px solid var(--color-border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 32px; flex-shrink: 0; z-index: 10;
+}
+
+/* Tablet: icon-only sidebar */
+@media (max-width: 1024px) {
+  .emp-sidebar { width: 72px; }
+  .emp-sidebar .sidebar-label,
+  .emp-sidebar .sidebar-section,
+  .emp-sidebar .sidebar-footer-text { display: none !important; }
+  .emp-search { display: none; }
+}
+/* Mobile: hide sidebar */
+@media (max-width: 768px) {
+  .emp-sidebar { display: none; }
+  .emp-topbar  { padding: 0 16px; }
+}
+
 /* ── Login responsive layout ── */
 @media (max-width: 1023px) {
   .login-page {
