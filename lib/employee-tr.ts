@@ -19,6 +19,21 @@ const TR = {
     'page.profile':     'โปรไฟล์ PERFORM-6™',
     'page.marketplace': 'กิจกรรม',
     'search.ph':        'ค้นหากิจกรรม...',
+    // Hero
+    'hero.greeting':    'สวัสดี คุณ',
+    'hero.sub':         'วันนี้คุณอยากดูแลตัวเองด้านไหน',
+    'hero.cta1':        'ดูกิจกรรมที่เหมาะกับฉัน',
+    'hero.cta2':        'ดูโปรไฟล์ของฉัน',
+    'hero.credits.lbl': 'เครดิตคงเหลือ',
+    'hero.bookings.lbl':'กิจกรรมที่จอง',
+    'hero.bookings.unit':'รายการ',
+    // Pillar short labels (strip)
+    'pillar.mind':      'ใจ',
+    'pillar.body':      'กาย',
+    'pillar.social':    'สังคม',
+    'pillar.growth':    'การเติบโต',
+    'pillar.work':      'การทำงาน',
+    'pillar.money':     'การเงิน',
   },
   en: {
     'nav.section':      'Menu',
@@ -35,6 +50,21 @@ const TR = {
     'page.profile':     'PERFORM-6™ Profile',
     'page.marketplace': 'Activities',
     'search.ph':        'Search activities...',
+    // Hero
+    'hero.greeting':    'Hello, ',
+    'hero.sub':         'What would you like to take care of today?',
+    'hero.cta1':        'View Recommended Activities',
+    'hero.cta2':        'View My Profile',
+    'hero.credits.lbl': 'Credits Remaining',
+    'hero.bookings.lbl':'Upcoming Bookings',
+    'hero.bookings.unit':'activities',
+    // Pillar short labels (strip)
+    'pillar.mind':      'Mind',
+    'pillar.body':      'Body',
+    'pillar.social':    'Social',
+    'pillar.growth':    'Growth',
+    'pillar.work':      'Work',
+    'pillar.money':     'Money',
   },
 } as const
 

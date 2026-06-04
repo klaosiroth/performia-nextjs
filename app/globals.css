@@ -183,6 +183,30 @@ body {
   .emp-topbar  { padding: 0 16px; }
 }
 
+/* ── HeroSection responsive ── */
+@media (max-width: 640px) {
+  .hero-section { padding: 24px 20px !important; }
+  .hero-main-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  .hero-stats {
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .hero-stats > div {
+    flex: 1;
+    min-width: calc(50% - 5px);
+  }
+  .hero-pillar-strip {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 12px 0;
+  }
+  /* Re-add left borders for the second row (items 4-6) */
+  .hero-pillar-strip > div:nth-child(4) { border-left: none !important; }
+}
+
 /* ── Login responsive layout ── */
 @media (max-width: 1023px) {
   .login-page {
