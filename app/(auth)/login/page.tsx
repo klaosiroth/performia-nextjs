@@ -78,7 +78,7 @@ export default function LoginPage() {
 
       <Toast message={toast.message} visible={toast.visible} />
 
-      <div style={{ display: 'flex', height: '100dvh', width: '100vw', overflow: 'hidden', position: 'relative' }}>
+      <div className="login-page" style={{ display: 'flex', height: '100dvh', width: '100vw', overflow: 'hidden', position: 'relative' }}>
         <LanguageSwitcher lang={lang} onChange={handleLangChange} />
         <BrandPanel lang={lang} />
         <LoginCard

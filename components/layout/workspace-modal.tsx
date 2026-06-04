@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect } from 'react'
 import type { Role } from '@/lib/supabase/types'
 import { tr, type LoginLang } from '@/lib/login-tr'
 
@@ -24,6 +25,13 @@ interface WorkspaceModalProps {
 export default function WorkspaceModal({ open, roles, lang, onSelect, onClose }: WorkspaceModalProps) {
   const t = (k: Parameters<typeof tr>[1]) => tr(lang, k)
   const visible = WORKSPACES.filter(w => roles.includes(w.role))
+
+  useEffect(() => {
+    if (!open) return
+    const handle = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+    document.addEventListener('keydown', handle)
+    return () => document.removeEventListener('keydown', handle)
+  }, [open, onClose])
 
   return (
     <div

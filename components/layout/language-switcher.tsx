@@ -38,6 +38,7 @@ export default function LanguageSwitcher({ lang, onChange }: LanguageSwitcherPro
   return (
     <div
       aria-label="Language selector"
+      className="login-lang-sw"
       style={{
         position: 'absolute',
         top: '22px',
@@ -57,6 +58,7 @@ export default function LanguageSwitcher({ lang, onChange }: LanguageSwitcherPro
       <button
         type="button"
         aria-pressed={lang === 'th'}
+        className="login-lang-btn"
         style={lang === 'th' ? activeStyle : inactiveStyle}
         onClick={() => onChange('th')}
       >
@@ -65,6 +67,7 @@ export default function LanguageSwitcher({ lang, onChange }: LanguageSwitcherPro
       <button
         type="button"
         aria-pressed={lang === 'en'}
+        className="login-lang-btn"
         style={lang === 'en' ? activeStyle : inactiveStyle}
         onClick={() => onChange('en')}
       >

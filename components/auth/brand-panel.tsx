@@ -10,7 +10,7 @@ export default function BrandPanel({ lang }: BrandPanelProps) {
 
   return (
     <div
-      className="lp"
+      className="login-brand"
       style={{
         width: '46%',
         position: 'relative',
@@ -129,6 +129,8 @@ export default function BrandPanel({ lang }: BrandPanelProps) {
           <circle cx="510" cy="200" r="1.5" fill="#59E3FF" opacity=".2"><animate attributeName="cy" values="200;185;200" dur="10s" repeatCount="indefinite"/><animate attributeName="opacity" values=".2;.4;.2" dur="10s" repeatCount="indefinite"/></circle>
           <circle cx="330" cy="690" r="1.2" fill="#10D5D2" opacity=".24"><animate attributeName="cy" values="690;676;690" dur="12s" repeatCount="indefinite"/><animate attributeName="opacity" values=".24;.45;.24" dur="12s" repeatCount="indefinite"/></circle>
           <circle cx="200" cy="120" r="1"   fill="#59E3FF" opacity=".2"><animate attributeName="cy" values="120;107;120" dur="9.5s" repeatCount="indefinite"/><animate attributeName="opacity" values=".2;.4;.2" dur="9.5s" repeatCount="indefinite"/></circle>
+          <circle cx="120" cy="740" r="1.5" fill="#10D5D2" opacity=".18"><animate attributeName="cy" values="740;725;740" dur="14s" repeatCount="indefinite"/><animate attributeName="opacity" values=".18;.38;.18" dur="14s" repeatCount="indefinite"/></circle>
+          <circle cx="440" cy="720" r="1"   fill="#59E3FF" opacity=".22"><animate attributeName="cy" values="720;706;720" dur="11s" repeatCount="indefinite"/><animate attributeName="opacity" values=".22;.42;.22" dur="11s" repeatCount="indefinite"/></circle>
         </g>
 
         {/* Arc lines */}
@@ -137,7 +139,7 @@ export default function BrandPanel({ lang }: BrandPanelProps) {
       </svg>
 
       {/* Copy layer */}
-      <div style={{ position:'relative', zIndex:2, height:'100%', display:'flex', flexDirection:'column', padding:'clamp(30px,3.8vw,56px)' }}>
+      <div className="lp-copy" style={{ position:'relative', zIndex:2, height:'100%', display:'flex', flexDirection:'column', padding:'clamp(30px,3.8vw,56px)' }}>
         {/* Logo */}
         <div className="fu d1" style={{ flexShrink:0 }}>
           <div style={{ display:'flex', alignItems:'center', gap:'11px' }}>
@@ -159,7 +161,7 @@ export default function BrandPanel({ lang }: BrandPanelProps) {
         </div>
 
         {/* Desktop headline */}
-        <div style={{ flex:1, display:'flex', flexDirection:'column', justifyContent:'center' }}>
+        <div className="lp-desk" style={{ flex:1, display:'flex', flexDirection:'column', justifyContent:'center' }}>
           <div className="fu d2" style={{ marginBottom:16 }}>
             <div style={{ display:'inline-flex', alignItems:'center', gap:6, padding:'4px 11px', borderRadius:99, background:'rgba(16,213,210,.1)', border:'1px solid rgba(16,213,210,.2)' }}>
               <span className="ldot" style={{ width:5, height:5, borderRadius:'50%', background:'var(--color-aqua)', flexShrink:0, display:'inline-block' }}/>
@@ -170,6 +172,12 @@ export default function BrandPanel({ lang }: BrandPanelProps) {
             <h1 style={{ color:'#fff', fontWeight:600, fontSize:'clamp(1.7rem,2.9vw,2.5rem)', lineHeight:lh.h, letterSpacing:'-.018em', marginBottom:14 }}>{t('brand.headline')}</h1>
             <p style={{ color:'rgba(185,210,230,.55)', fontSize:'clamp(.8rem,.96vw,.9rem)', fontWeight:300, lineHeight:lh.b, maxWidth:310 }}>{t('brand.supporting')}</p>
           </div>
+        </div>
+
+        {/* Mobile compact — hidden on desktop via CSS */}
+        <div className="lp-mob" style={{ display:'none' }}>
+          <h1 style={{ color:'#fff', fontWeight:600, fontSize:'1.45rem', lineHeight: lh.h }}>{t('brand.headline')}</h1>
+          <p style={{ color:'rgba(185,210,230,.55)', fontSize:'.82rem', fontWeight:300, lineHeight:lh.b }}>{t('brand.supporting')}</p>
         </div>
 
         {/* Copyright */}

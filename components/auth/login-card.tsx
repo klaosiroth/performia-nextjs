@@ -95,7 +95,7 @@ export default function LoginCard({ lang, onToast, onModal, onBanner, onNavigate
   }
 
   return (
-    <div style={{ width:'54%', display:'flex', alignItems:'center', justifyContent:'center', padding:'clamp(24px,3vw,56px)', position:'relative', overflow:'hidden', background:`radial-gradient(ellipse 70% 60% at 85% 10%, rgba(89,227,255,.055) 0%,transparent 65%), radial-gradient(ellipse 55% 55% at 5% 90%, rgba(16,213,210,.04) 0%,transparent 60%), linear-gradient(155deg,#EDF6FC 0%,#E4F1F9 48%,#EEF5FB 100%)` }}>
+    <div className="login-right" style={{ width:'54%', display:'flex', alignItems:'center', justifyContent:'center', padding:'clamp(24px,3vw,56px)', position:'relative', overflow:'hidden', background:`radial-gradient(ellipse 70% 60% at 85% 10%, rgba(89,227,255,.055) 0%,transparent 65%), radial-gradient(ellipse 55% 55% at 5% 90%, rgba(16,213,210,.04) 0%,transparent 60%), linear-gradient(155deg,#EDF6FC 0%,#E4F1F9 48%,#EEF5FB 100%)` }}>
       {/* Dot grid */}
       <div style={{ position:'absolute', inset:0, pointerEvents:'none', backgroundImage:'radial-gradient(circle,rgba(7,27,99,.055) 1px,transparent 1px)', backgroundSize:'26px 26px', opacity:.9 }}/>
 
@@ -132,7 +132,7 @@ export default function LoginCard({ lang, onToast, onModal, onBanner, onNavigate
             {/* Email */}
             <div>
               <label htmlFor="login-email" style={{ display:'block', fontSize:'.74rem', fontWeight:500, color:'var(--color-text-primary)', marginBottom:5 }}>{t('form.emailLabel')}</label>
-              <input id="login-email" type="email" autoComplete="email" value={email} onChange={e => setEmail(e.target.value)} onKeyDown={handleKey} placeholder={t('form.emailPlaceholder')} style={inpStyle}
+              <input id="login-email" type="email" autoComplete="email" value={email} onChange={e => setEmail(e.target.value)} onKeyDown={handleKey} placeholder={t('form.emailPlaceholder')} className="login-inp" style={inpStyle}
                 onFocus={e => { e.currentTarget.style.borderColor='var(--color-aqua)'; e.currentTarget.style.background='rgba(255,255,255,.98)'; e.currentTarget.style.boxShadow='0 0 0 3.5px rgba(16,213,210,.1)' }}
                 onBlur={e => { e.currentTarget.style.borderColor='#C3D8EC'; e.currentTarget.style.background='rgba(232,243,251,.52)'; e.currentTarget.style.boxShadow='none' }}
               />
@@ -145,7 +145,7 @@ export default function LoginCard({ lang, onToast, onModal, onBanner, onNavigate
                 <a href="#" style={{ fontSize:'.73rem', color:'var(--color-aqua)', textDecoration:'none' }} onClick={e => e.preventDefault()}>{t('form.forgotPassword')}</a>
               </div>
               <div style={{ position:'relative' }}>
-                <input id="login-password" type={showPw ? 'text' : 'password'} autoComplete="current-password" value={password} onChange={e => setPassword(e.target.value)} onKeyDown={handleKey} placeholder="••••••••" style={{ ...inpStyle, paddingRight:42 }}
+                <input id="login-password" type={showPw ? 'text' : 'password'} autoComplete="current-password" value={password} onChange={e => setPassword(e.target.value)} onKeyDown={handleKey} placeholder="••••••••" className="login-inp" style={{ ...inpStyle, paddingRight:42 }}
                   onFocus={e => { e.currentTarget.style.borderColor='var(--color-aqua)'; e.currentTarget.style.background='rgba(255,255,255,.98)'; e.currentTarget.style.boxShadow='0 0 0 3.5px rgba(16,213,210,.1)' }}
                   onBlur={e => { e.currentTarget.style.borderColor='#C3D8EC'; e.currentTarget.style.background='rgba(232,243,251,.52)'; e.currentTarget.style.boxShadow='none' }}
                 />
@@ -162,7 +162,7 @@ export default function LoginCard({ lang, onToast, onModal, onBanner, onNavigate
 
             {/* Remember me */}
             <label style={{ display:'flex', alignItems:'center', gap:7, cursor:'pointer', userSelect:'none' }}>
-              <input type="checkbox" checked={rememberMe} onChange={e => setRememberMe(e.target.checked)} style={{ appearance:'none', width:15, height:15, borderRadius:4, border:`1.5px solid ${rememberMe ? 'transparent' : '#BACEDF'}`, background: rememberMe ? 'linear-gradient(135deg,var(--color-aqua),var(--color-cyan-accent))' : 'rgba(255,255,255,.9)', cursor:'pointer', flexShrink:0, position:'relative', transition:'background .15s, border-color .15s' }}/>
+              <input type="checkbox" checked={rememberMe} onChange={e => setRememberMe(e.target.checked)} className="login-cb" style={{ appearance:'none', width:15, height:15, borderRadius:4, border:`1.5px solid ${rememberMe ? 'transparent' : '#BACEDF'}`, background: rememberMe ? 'linear-gradient(135deg,var(--color-aqua),var(--color-cyan-accent))' : 'rgba(255,255,255,.9)', cursor:'pointer', flexShrink:0, position:'relative', transition:'background .15s, border-color .15s' }}/>
               <span style={{ fontSize:'.78rem', color:'var(--color-text-secondary)', fontWeight:300 }}>{t('form.rememberMe')}</span>
             </label>
 

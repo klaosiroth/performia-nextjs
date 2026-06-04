@@ -129,3 +129,55 @@ body {
 @keyframes login-spin {
   to { transform: rotate(360deg) }
 }
+
+/* ── Login responsive layout ── */
+@media (max-width: 1023px) {
+  .login-page {
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: 100dvh;
+    overflow-y: auto !important;
+    overflow-x: hidden;
+  }
+  .login-brand {
+    width: 100% !important;
+    min-height: 260px;
+    flex-shrink: 0;
+  }
+  .login-brand .lp-copy { padding: 26px 22px !important; }
+  .login-brand .lp-desk { display: none !important; }
+  .login-brand .lp-mob  {
+    display: flex !important;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+  }
+  .login-right { width: 100% !important; }
+}
+@media (min-width: 1024px) {
+  .login-brand .lp-mob { display: none !important; }
+}
+
+/* ── Login input placeholder ── */
+.login-inp::placeholder { color: var(--color-text-muted); }
+
+/* ── Login checkbox checkmark ── */
+.login-cb:checked::after {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 7px;
+  border: 1.5px solid #fff;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg) translate(2.5px, -1.5px);
+}
+
+/* ── Language switcher hover ── */
+.login-lang-sw:hover {
+  box-shadow: 0 4px 22px rgba(6,24,73,.11) !important;
+}
+.login-lang-btn:not([aria-pressed="true"]):hover {
+  color: var(--color-navy) !important;
+}
