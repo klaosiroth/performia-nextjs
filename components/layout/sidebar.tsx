@@ -7,6 +7,7 @@ import {
   Wallet, CalendarCheck, MessageSquare, CircleHelp, ChevronRight,
 } from 'lucide-react'
 import { et, type EmployeeLang } from '@/lib/employee-tr'
+import Logo from '@/components/ui/logo'
 
 interface SidebarUser {
   name: string
@@ -53,7 +54,7 @@ export default function Sidebar({ lang, user }: SidebarProps) {
             <path d="M7.5 12.5l3 3 6-6" stroke="#071B63" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </div>
-        <span className="sidebar-label" style={{ fontSize: 16, fontWeight: 700, color: 'var(--color-navy)', letterSpacing: '-0.3px' }}>Performia</span>
+        <span className="sidebar-label"><Logo variant="light" width={110} height={30} /></span>
       </div>
 
       {/* Nav */}

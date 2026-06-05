@@ -1,4 +1,5 @@
 import { tr, type LoginLang } from '@/lib/login-tr'
+import Logo from '@/components/ui/logo'
 
 interface BrandPanelProps {
   lang: LoginLang
@@ -142,21 +143,9 @@ export default function BrandPanel({ lang }: BrandPanelProps) {
       <div className="lp-copy" style={{ position:'relative', zIndex:2, height:'100%', display:'flex', flexDirection:'column', padding:'clamp(30px,3.8vw,56px)' }}>
         {/* Logo */}
         <div className="fu d1" style={{ flexShrink:0 }}>
-          <div style={{ display:'flex', alignItems:'center', gap:'11px' }}>
-            <div style={{ width:40, height:40, borderRadius:11, background:'rgba(255,255,255,.1)', border:'1px solid rgba(255,255,255,.16)', display:'flex', alignItems:'center', justifyContent:'center', backdropFilter:'blur(12px)' }}>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <circle cx="12" cy="7" r="2.8" fill="rgba(89,227,255,.88)"/>
-                <path d="M7 18c0-2.76 2.24-4.5 5-4.5s5 1.74 5 4.5" stroke="rgba(89,227,255,.88)" strokeWidth="1.4" strokeLinecap="round"/>
-                <circle cx="4.5" cy="9.5" r="1.5" fill="rgba(16,213,210,.52)"/>
-                <circle cx="19.5" cy="9.5" r="1.5" fill="rgba(16,213,210,.52)"/>
-                <line x1="6.8" y1="9.2" x2="9.8" y2="7.8" stroke="rgba(16,213,210,.3)" strokeWidth="1" strokeLinecap="round"/>
-                <line x1="17.2" y1="9.2" x2="14.2" y2="7.8" stroke="rgba(16,213,210,.3)" strokeWidth="1" strokeLinecap="round"/>
-              </svg>
-            </div>
-            <div>
-              <div style={{ color:'#fff', fontWeight:700, fontSize:'1.08rem', letterSpacing:'-.015em', lineHeight:1.1 }}>Performia</div>
-              <div style={{ color:'rgba(89,227,255,.48)', fontSize:'.56rem', fontWeight:500, letterSpacing:'.1em', textTransform:'uppercase', marginTop:2 }}>{t('brand.tagline')}</div>
-            </div>
+          <div style={{ display:'flex', flexDirection:'column', gap:6 }}>
+            <Logo variant="dark" width={130} height={36} />
+            <div style={{ color:'rgba(89,227,255,.48)', fontSize:'.56rem', fontWeight:500, letterSpacing:'.1em', textTransform:'uppercase' }}>{t('brand.tagline')}</div>
           </div>
         </div>
 

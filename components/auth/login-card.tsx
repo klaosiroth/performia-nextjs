@@ -4,6 +4,7 @@ import { useState, useCallback } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import type { Role } from '@/lib/supabase/types'
 import { tr, type LoginLang } from '@/lib/login-tr'
+import Logo from '@/components/ui/logo'
 
 function detectRoles(email: string): Role[] {
   const e = email.toLowerCase()
@@ -106,19 +107,8 @@ export default function LoginCard({ lang, onToast, onModal, onBanner, onNavigate
           <div style={{ position:'absolute', top:0, left:'10%', right:'10%', height:1, borderRadius:'50%', background:'linear-gradient(90deg,transparent,rgba(255,255,255,.96),transparent)' }}/>
 
           {/* Card logo */}
-          <div style={{ display:'flex', alignItems:'center', gap:9, marginBottom:22 }}>
-            <div style={{ width:32, height:32, borderRadius:8, background:'linear-gradient(135deg,rgba(16,213,210,.17),rgba(89,227,255,.09))', border:'1px solid rgba(16,213,210,.22)', display:'flex', alignItems:'center', justifyContent:'center' }}>
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <circle cx="12" cy="7.5" r="2.5" fill="var(--color-aqua)" opacity=".82"/>
-                <path d="M7.5 16.5c0-2.485 2.015-4 4.5-4s4.5 1.515 4.5 4" stroke="var(--color-aqua)" strokeWidth="1.5" strokeLinecap="round"/>
-                <circle cx="5.5" cy="9" r="1.5" fill="var(--color-aqua)" opacity=".36"/>
-                <circle cx="18.5" cy="9" r="1.5" fill="var(--color-aqua)" opacity=".36"/>
-              </svg>
-            </div>
-            <div>
-              <div style={{ fontWeight:700, fontSize:'.9rem', color:'var(--color-navy)', letterSpacing:'-.012em', lineHeight:1 }}>Performia</div>
-              <div style={{ fontSize:'.57rem', color:'var(--color-aqua)', letterSpacing:'.07em', textTransform:'uppercase', marginTop:2, opacity:.7 }}>{t('brand.tagline')}</div>
-            </div>
+          <div style={{ marginBottom:22 }}>
+            <Logo variant="light" width={110} height={30} />
           </div>
 
           {/* Headline */}
