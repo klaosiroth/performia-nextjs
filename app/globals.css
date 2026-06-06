@@ -103,6 +103,17 @@ body {
 .d2  { animation-delay: .18s }
 .d3  { animation-delay: .30s }
 .d4  { animation-delay: .44s }
+.d5  { animation-delay: .60s }
+
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px) } to { opacity: 1; transform: translateY(0) } }
+.slide-up { animation: slideUp .32s cubic-bezier(.4,0,.2,1) both; }
+
+@keyframes spin { to { transform: rotate(360deg) } }
+.spin-anim { animation: spin .8s linear infinite; }
+
+/* ── Assessment pillar nav scroll ── */
+.assess-pillar-nav { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 8px; scrollbar-width: none; }
+.assess-pillar-nav::-webkit-scrollbar { display: none; }
 
 @keyframes live-blink {
   0%, 100% { opacity: 1 }

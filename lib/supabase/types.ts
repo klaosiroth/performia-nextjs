@@ -17,8 +17,19 @@ export interface Database {
           region: string | null
           size: string | null
         }
-        Insert: Omit<Database["public"]["Tables"]["organizations"]["Row"], "id">
-        Update: Partial<Database["public"]["Tables"]["organizations"]["Insert"]>
+        Insert: {
+          name: string
+          type?: string | null
+          region?: string | null
+          size?: string | null
+        }
+        Update: {
+          name?: string
+          type?: string | null
+          region?: string | null
+          size?: string | null
+        }
+        Relationships: []
       }
       profiles: {
         Row: {
@@ -33,8 +44,29 @@ export interface Database {
           credits_used: number
           created_at: string
         }
-        Insert: Omit<Database["public"]["Tables"]["profiles"]["Row"], "created_at">
-        Update: Partial<Database["public"]["Tables"]["profiles"]["Insert"]>
+        Insert: {
+          id: string
+          name_th?: string | null
+          name_en?: string | null
+          dept?: string | null
+          position?: string | null
+          role?: Role
+          org_id?: string | null
+          credits_annual?: number
+          credits_used?: number
+        }
+        Update: {
+          id?: string
+          name_th?: string | null
+          name_en?: string | null
+          dept?: string | null
+          position?: string | null
+          role?: Role
+          org_id?: string | null
+          credits_annual?: number
+          credits_used?: number
+        }
+        Relationships: []
       }
       assessments: {
         Row: {
@@ -48,8 +80,25 @@ export interface Database {
           completed_at: string | null
           created_at: string
         }
-        Insert: Omit<Database["public"]["Tables"]["assessments"]["Row"], "id" | "created_at">
-        Update: Partial<Database["public"]["Tables"]["assessments"]["Insert"]>
+        Insert: {
+          user_id: string
+          status: AssessmentStatus
+          answers?: Record<string, number> | null
+          scores?: Record<PillarKey, number> | null
+          overall_score?: number | null
+          zone?: ZoneKey | null
+          completed_at?: string | null
+        }
+        Update: {
+          user_id?: string
+          status?: AssessmentStatus
+          answers?: Record<string, number> | null
+          scores?: Record<PillarKey, number> | null
+          overall_score?: number | null
+          zone?: ZoneKey | null
+          completed_at?: string | null
+        }
+        Relationships: []
       }
       activities: {
         Row: {
@@ -66,8 +115,33 @@ export interface Database {
           cover_image: string | null
           is_active: boolean
         }
-        Insert: Omit<Database["public"]["Tables"]["activities"]["Row"], "id">
-        Update: Partial<Database["public"]["Tables"]["activities"]["Insert"]>
+        Insert: {
+          title_th: string
+          title_en: string
+          desc_th?: string | null
+          desc_en?: string | null
+          pillar: PillarKey
+          credits: number
+          duration: number
+          format: ActivityFormat
+          group_tag?: ActivityGroup | null
+          cover_image?: string | null
+          is_active?: boolean
+        }
+        Update: {
+          title_th?: string
+          title_en?: string
+          desc_th?: string | null
+          desc_en?: string | null
+          pillar?: PillarKey
+          credits?: number
+          duration?: number
+          format?: ActivityFormat
+          group_tag?: ActivityGroup | null
+          cover_image?: string | null
+          is_active?: boolean
+        }
+        Relationships: []
       }
       activity_slots: {
         Row: {
@@ -77,8 +151,19 @@ export interface Database {
           seats_total: number
           seats_booked: number
         }
-        Insert: Omit<Database["public"]["Tables"]["activity_slots"]["Row"], "id">
-        Update: Partial<Database["public"]["Tables"]["activity_slots"]["Insert"]>
+        Insert: {
+          activity_id: string
+          starts_at: string
+          seats_total: number
+          seats_booked?: number
+        }
+        Update: {
+          activity_id?: string
+          starts_at?: string
+          seats_total?: number
+          seats_booked?: number
+        }
+        Relationships: []
       }
       bookings: {
         Row: {
@@ -89,8 +174,19 @@ export interface Database {
           credits_spent: number
           created_at: string
         }
-        Insert: Omit<Database["public"]["Tables"]["bookings"]["Row"], "id" | "created_at">
-        Update: Partial<Database["public"]["Tables"]["bookings"]["Insert"]>
+        Insert: {
+          user_id: string
+          slot_id: string
+          status: BookingStatus
+          credits_spent: number
+        }
+        Update: {
+          user_id?: string
+          slot_id?: string
+          status?: BookingStatus
+          credits_spent?: number
+        }
+        Relationships: []
       }
       org_snapshots: {
         Row: {
@@ -106,9 +202,32 @@ export interface Database {
           risk_metrics: Record<string, unknown> | null
           created_at: string
         }
-        Insert: Omit<Database["public"]["Tables"]["org_snapshots"]["Row"], "id" | "created_at">
-        Update: Partial<Database["public"]["Tables"]["org_snapshots"]["Insert"]>
+        Insert: {
+          org_id: string
+          period: string
+          pillar_scores?: Record<PillarKey, number> | null
+          overall_score?: number | null
+          engagement_rate?: number | null
+          budget_util?: number | null
+          active_users?: number | null
+          dept_breakdown?: Record<string, unknown> | null
+          risk_metrics?: Record<string, unknown> | null
+        }
+        Update: {
+          org_id?: string
+          period?: string
+          pillar_scores?: Record<PillarKey, number> | null
+          overall_score?: number | null
+          engagement_rate?: number | null
+          budget_util?: number | null
+          active_users?: number | null
+          dept_breakdown?: Record<string, unknown> | null
+          risk_metrics?: Record<string, unknown> | null
+        }
+        Relationships: []
       }
     }
+    Views: Record<string, never>
+    Functions: Record<string, never>
   }
 }
