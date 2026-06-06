@@ -62,6 +62,17 @@ const TR = {
     'quick.activities': 'กิจกรรมของฉัน',
     'quick.assessment': 'แบบประเมิน',
     'quick.help':       'ศูนย์ช่วยเหลือ',
+    // ActivitiesCarousel
+    'act.title':        'กิจกรรมที่เหมาะกับคุณ',
+    'act.sub':          'คัดสรรพิเศษจากโปรไฟล์ PERFORM-6™ ของคุณ',
+    'act.link':         'ดูทั้งหมด →',
+    'act.cta':          'ดูรายละเอียด',
+    // BookingsSection
+    'book.title':       'กิจกรรมที่กำลังจะเข้าร่วม',
+    'book.sub':         'การจองที่ยืนยันแล้วของคุณ',
+    'book.link':        'จัดการทั้งหมด →',
+    'book.status':      'ยืนยันแล้ว',
+    'book.manage':      'จัดการ',
   },
   en: {
     'nav.section':      'Menu',
@@ -121,6 +132,17 @@ const TR = {
     'quick.activities': 'My Activities',
     'quick.assessment': 'Assessment',
     'quick.help':       'Help Center',
+    // ActivitiesCarousel
+    'act.title':        'Recommended Activities',
+    'act.sub':          'Curated from your PERFORM-6™ profile',
+    'act.link':         'View All →',
+    'act.cta':          'View Details',
+    // BookingsSection
+    'book.title':       'Upcoming Activities',
+    'book.sub':         'Your confirmed bookings',
+    'book.link':        'Manage All →',
+    'book.status':      'Confirmed',
+    'book.manage':      'Manage',
   },
 } as const
 

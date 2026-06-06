@@ -139,6 +139,10 @@ body {
 @keyframes pulseDot { 0%,100% { opacity: 1 } 50% { opacity: .4 } }
 .pulse-dot { animation: pulseDot 2s ease-in-out infinite; }
 
+/* ── Horizontal scroll strip (carousel) ── */
+.hscroll { display: flex; gap: 16px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
+.hscroll::-webkit-scrollbar { display: none; }
+
 /* ── Employee shell layout ── */
 .emp-shell   { display: flex; height: 100vh; overflow: hidden; }
 .emp-main    { flex: 1; display: flex; flex-direction: column; overflow: hidden; }

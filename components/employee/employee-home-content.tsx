@@ -7,17 +7,23 @@ import HeroSection       from '@/components/employee/hero-section'
 import CreditSummaryCard from '@/components/employee/credit-summary-card'
 import WellbeingSnapshot, { type PillarStatus } from '@/components/employee/wellbeing-snapshot'
 import RecommendedFocus  from '@/components/employee/recommended-focus'
-import QuickActions      from '@/components/employee/quick-actions'
+import QuickActions       from '@/components/employee/quick-actions'
+import ActivitiesCarousel from '@/components/employee/activities-carousel'
+import BookingsSection    from '@/components/employee/bookings-section'
+import type { BookingWithDetails } from '@/components/employee/bookings-section'
 import type { EmployeeLang } from '@/lib/employee-tr'
 import { PILLAR_KEYS, type PillarKey, type ZoneKey } from '@/tokens/pillars'
 import type { Database } from '@/lib/supabase/types'
 
 type Profile    = Database['public']['Tables']['profiles']['Row']
 type Assessment = Database['public']['Tables']['assessments']['Row']
+type Activity   = Database['public']['Tables']['activities']['Row']
 
 interface Props {
-  profile:          Profile    | null
-  latestAssessment: Assessment | null
+  profile:          Profile             | null
+  latestAssessment: Assessment          | null
+  activities:       Activity[]
+  bookings:         BookingWithDetails[]
   fetchError:       boolean
 }
 
@@ -46,7 +52,7 @@ function deriveFocus(pillars: PillarStatus[]): PillarKey[] {
   return [...pillars].sort((a, b) => a.score - b.score).slice(0, 3).map(p => p.pillar)
 }
 
-export default function EmployeeHomeContent({ profile, latestAssessment, fetchError }: Props) {
+export default function EmployeeHomeContent({ profile, latestAssessment, activities, bookings, fetchError }: Props) {
   const [lang] = useState<EmployeeLang>(() => {
     if (typeof window === 'undefined') return 'th'
     try {
@@ -138,6 +144,12 @@ export default function EmployeeHomeContent({ profile, latestAssessment, fetchEr
         ? <RecommendedFocus pillars={focus} lang={lang} />
         : <NoFocusBanner lang={lang} />
       }
+
+      {/* Activities carousel */}
+      <ActivitiesCarousel activities={activities} lang={lang} />
+
+      {/* Upcoming bookings */}
+      <BookingsSection bookings={bookings} lang={lang} />
 
       {/* Quick actions — always visible */}
       <QuickActions lang={lang} />
