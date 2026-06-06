@@ -262,6 +262,13 @@ body {
   transform: rotate(45deg) translate(2.5px, -1.5px);
 }
 
+/* ── Skeleton loading ── */
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 1 }
+  50%       { opacity: .45 }
+}
+.skeleton { animation: skeleton-pulse 1.6s ease-in-out infinite; }
+
 /* ── Language switcher hover ── */
 .login-lang-sw:hover {
   box-shadow: 0 4px 22px rgba(6,24,73,.11) !important;
